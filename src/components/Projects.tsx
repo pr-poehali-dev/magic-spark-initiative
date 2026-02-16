@@ -36,7 +36,11 @@ const projects = [
   },
 ]
 
-export function Projects() {
+interface ProjectsProps {
+  onSignUp?: () => void
+}
+
+export function Projects({ onSignUp }: ProjectsProps) {
   const [hoveredId, setHoveredId] = useState<number | null>(null)
   const [revealedImages, setRevealedImages] = useState<Set<number>>(new Set())
   const imageRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -71,13 +75,13 @@ export function Projects() {
             <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Созданные в Roomiq</p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight">Примеры интерьеров</h2>
           </div>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+          <button
+            onClick={onSignUp}
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group cursor-pointer"
           >
             Создать свой дизайн
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          </button>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 md:gap-8">
